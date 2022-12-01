@@ -11,6 +11,19 @@ export class App extends Component {
     bad: 0,
   };
 
+  countTotalFeedback = () => {
+    const { good, neutral, bad } = this.state;
+    const total = good + neutral + bad;
+    return total;
+  };
+
+  countPositiveFeedbackPercentage = () => {
+    const total = this.countTotalFeedback();
+    const { good } = this.state;
+    const result = Math.round((good * 100) / total);
+    return result;
+  };
+
   handleButtonClick = e => {
     const options = e.target.name;
     this.setState(prevState => ({
@@ -21,19 +34,24 @@ export class App extends Component {
     const keys = Object.keys(this.state);
     console.log(keys);
     const { good, neutral, bad } = this.state;
+    const total = this.countTotalFeedback();
+    const result = this.countPositiveFeedbackPercentage();
     return (
       <>
         <Feedback title="Plese leave feedback">
           <Buttons options={keys} handleButtonClick={this.handleButtonClick} />
         </Feedback>
-        <Notification message="There is no feedback" />
-        <Statistics
-          good={good}
-          neutral={neutral}
-          bad={bad}
-          total={this.total}
-          positivePercentage={this.positivePercentage}
-        />
+        {total === 0 ? (
+          <Notification message="There is no feedback" />
+        ) : (
+          <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={total}
+            positivePercentage={result}
+          />
+        )}
       </>
     );
   }
