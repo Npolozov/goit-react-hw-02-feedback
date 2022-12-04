@@ -1,4 +1,5 @@
 import shortid from 'shortid';
+import PropTypes from 'prop-types';
 
 export const Buttons = ({ options, handleButtonClick }) => {
   return options.map(option => (
@@ -11,4 +12,9 @@ export const Buttons = ({ options, handleButtonClick }) => {
       {option}
     </button>
   ));
+};
+
+Buttons.propTypes = {
+  options: PropTypes.array.isRequired,
+  handleButtonClick: PropTypes.func.isRequired,
 };

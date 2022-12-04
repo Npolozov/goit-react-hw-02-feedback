@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export const Feedback = ({ title, children }) => {
   return (
     <>
@@ -5,4 +7,8 @@ export const Feedback = ({ title, children }) => {
       {children}
     </>
   );
+};
+
+Feedback.propTypes = {
+  title: PropTypes.string.isRequired,
 };
