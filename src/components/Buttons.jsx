@@ -1,16 +1,17 @@
 import shortid from 'shortid';
 import PropTypes from 'prop-types';
+import {Button} from './Buttons.styled'
 
 export const Buttons = ({ options, handleButtonClick }) => {
   return options.map(option => (
-    <button
+    <Button
       key={shortid.generate()}
       type="button"
       name={option}
       onClick={handleButtonClick}
     >
       {option}
-    </button>
+    </Button>
   ));
 };
 
