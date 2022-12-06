@@ -24,11 +24,11 @@ export const Buttons = ({ options, handleButtonClick }) => {
 function renderIcon(param) {
   switch (param) {
     case 'good':
-      return <BsEmojiSmileFill margin-top="20px" />;
+      return <BsEmojiSmileFill fill="green" />;
     case 'neutral':
-      return <BsEmojiNeutralFill fill="green" />;
+      return <BsEmojiNeutralFill fill="yellow" />;
     case 'bad':
-      return <BsEmojiFrownFill fill="green" />;
+      return <BsEmojiFrownFill fill="red" />;
     default:
       throw new Error('Unexpected value of option');
   }
